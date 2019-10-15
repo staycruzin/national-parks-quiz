@@ -2,30 +2,36 @@
 <html lang="en">
 <head>
     <title>National Parks Quiz</title>
+
     <meta charset="UTF-8">
+    <meta name="description" content="A quiz application about the United States National Parks.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css?family=Lato|Sigmar+One&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
     <header class="header" role="banner">
-        <h1 class="mainHeader">National Parks Quiz App</h1>
+        <h1>National Parks Quiz App</h1>
         <ul class="status">
             <li>Question: <span>0/10</span></li>
             <li>|</li>
             <li>Score: <span>0</span></li>
         </ul>
     </header>
-    <div class="mainContainer">
-        <div class="homePage">
-            <h3 class="mainQuestion">How well do you know our national parks?</h3>
+
+    <main class="main-container" role="main">
+        <section id="home-page" class="view">
+            <h3 class="main-question">How well do you know our national parks?</h3>
             <img class="nps" src="images/delaware.png" alt="National Park Service Logo">
             <button class="start" type="button">Start Quiz</button>
-        </div>
+        </section>
 
-        <div class="quizPage" style="display: none">
-            <h3 class="quizQuestion">What is the only state in the United States that is unfortunate enough to not have either a national park or a national monument?</h3>
+        <section id="quiz-page" class="hide-view">
+            <h3 class="quiz-question">What is the only state in the United States that is unfortunate enough to not have either a national park or a national monument?</h3>
             <form>
                 <input type="radio" name="answer1" value="Delaware"> Delaware
                 <br><br>
@@ -35,31 +41,34 @@
                 <br><br>
                 <input type="radio" name="answer4" value="Ohio"> Ohio
                 <br><br>
-                <button class="submitAnswer" type="submit">Submit</button>
+                <button class="submit-answer" type="submit">Submit</button>
             </form>
-        </div>
+        </section>
 
-        <div class="correctPage" style="display: none">        
+        <section id="correct-page" class="hide-view">        
                 <h3>Correct! You just earned the National Park badge.</h3>
                 <img class="nps" src="images/delaware.png" alt="National Park Service Logo">
                 <p>Detailed Answer: </p>
                 <p>Delaware, which is ironically the country's first state, is the only state that does not currently have a national park or a national monument.</p>
                 <button class="next" type="button">Next Question</button>
-        </div>
-        <div class="incorrectPage" style="display: none">        
+        </section>
+        <section id="incorrect-page" class="hide-view">        
                 <h3>Incorrect. The Correct Answer Was Delaware.</h3>
                 <p>Detailed Answer: </p>
                 <p>Delaware, which is ironically the country's first state, is the only state that does not currently have a national park or a national monument.</p>
                 <button class="next" type="button">Next Question</button>
-        </div>
+        </section>
 
-        <div class="quizEndPage" style="display: none">        
+        <section id="quiz-end-page" class="hide-view">        
             <h3>Your score is 8/10</h3>
             <p>8/10.. not bad!</p>
             <p>One last fun fact: There are over 18,000 miles of trails in the national parks just waiting for you to explore them. 
                 Check out the National Parks Service website for more info, and to start planning your trip today!</p>
-            <button class="playAgain" type="button">Play Again</button>
-        </div>
-    </div>
+            <button class="play-again" type="button">Play Again</button>
+        </section>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>

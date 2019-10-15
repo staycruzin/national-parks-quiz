@@ -12,7 +12,7 @@
     position: relative;
 }
 
-.mainHeader {
+.header h1 {
     display: inline-block;
     margin-left: 10px
 }
@@ -31,7 +31,7 @@
     padding-right: 10px;
 }
 
-.mainContainer {
+.main-container {
     margin: auto;
     padding: 10px;
     width: 50%;
@@ -39,7 +39,7 @@
     border: 1px black solid;
 }
 
-.submitAnswer {
+.submit-answer {
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -52,17 +52,25 @@
     margin-bottom: 10px;
 }
 
-.correctPage .nps {
+.view {
+    display: block;
+}
+
+.hide-view {
+    display: none;
+}
+
+#correct-page .nps {
     float: left;
     margin-right: 25px;
 }
 
-.correctPage p {
+#correct-page p {
     position: relative;
     top: 75px;
 }
 
-.correctPage .next {
+#correct-page .next {
     margin-left: auto;
     margin-right: auto;
     display: block;
