@@ -12,16 +12,23 @@
     position: relative;
 }
 
-.mainHeader,.statusHeader {
-    display: inline-block;
-}
-
 .mainHeader {
+    display: inline-block;
     margin-left: 10px
 }
-.statusHeader {
+
+.status {
     position: absolute;
     right: 10px;
+    display: inline-block;
+    list-style: none;
+    margin-top: 30px;
+}
+
+.status li {
+    display: inline;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .mainContainer {
@@ -45,37 +52,21 @@
     margin-bottom: 10px;
 }
 
-.main {
-    display: block;
-}
-
-.quizQuestions {
-    display: none;
-}
-
-.correctAnswer {
-    display: none;
-}
-
-.correctAnswer .nps {
+.correctPage .nps {
     float: left;
     margin-right: 25px;
 }
 
-.correctAnswer p {
+.correctPage p {
     position: relative;
     top: 75px;
 }
 
-.correctAnswer .next {
+.correctPage .next {
     margin-left: auto;
     margin-right: auto;
     display: block;
     clear: left;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-.incorrectAnswer {
-    display: none;
 }
