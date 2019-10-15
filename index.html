@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>National Parks Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header class="header" role="banner">
+        <h1 class="mainHeader">National Parks Quiz App</h1><h3 class="statusHeader">Question: 0/10 | Score: 0</h3>
+    </header>
+    <div class="mainContainer">
+        <div class="main">
+            <h3 class="mainQuestion">How well do you know our national parks?</h3>
+            <img class="nps" src="images/delaware.png" alt="National Park Service Logo">
+            <button class="start" type="button">Start Quiz</button>
+        </div>
+
+        <div class="quizQuestions">
+            <h3 class="quizQuestion">What is the only state in the United States that is unfortunate enough to not have either a national park or a national monument?</h3>
+            <form>
+                <input type="radio" name="answer1" value="Delaware"> Delaware
+                <br><br>
+                <input type="radio" name="answer2" value="New York"> New York
+                <br><br>
+                <input type="radio" name="answer3" value="New Jersey"> New Jersey
+                <br><br>
+                <input type="radio" name="answer4" value="Ohio"> Ohio
+                <br><br>
+                <button class="submitAnswer" type="submit">Submit</button>
+            </form>
+        </div>
+
+        <div class="correctAnswer">        
+                <h3>Correct! You just earned the National Park badge.</h3>
+                <img class="nps" src="images/delaware.png" alt="National Park Service Logo">
+                <p>Detailed Answer: </p>
+                <p>Delaware, which is ironically the country's first state, is the only state that does not currently have a national park or a national monument.</p>
+                <button class="next" type="button">Next Question</button>
+        </div>
+        <div class="incorrectAnswer">        
+                <h3>Incorrect. The Correct Answer Was Delaware.</h3>
+                <p>Detailed Answer: </p>
+                <p>Delaware, which is ironically the country's first state, is the only state that does not currently have a national park or a national monument.</p>
+                <button class="next" type="button">Next Question</button>
+        </div>
+    </div>
+</body>
+</html>

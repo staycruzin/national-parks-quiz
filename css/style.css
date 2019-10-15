@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+.nps {
+    height: 300px;
+    width: 250px;
+}
+
+.header {
+    width: 100%;
+    position: relative;
+}
+
+.mainHeader,.statusHeader {
+    display: inline-block;
+}
+
+.mainHeader {
+    margin-left: 10px
+}
+.statusHeader {
+    position: absolute;
+    right: 10px;
+}
+
+.mainContainer {
+    margin: auto;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
+    border: 1px black solid;
+}
+
+.submitAnswer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.start {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.main {
+    display: block;
+}
+
+.quizQuestions {
+    display: none;
+}
+
+.correctAnswer {
+    display: none;
+}
+
+.correctAnswer .nps {
+    float: left;
+    margin-right: 25px;
+}
+
+.correctAnswer p {
+    position: relative;
+    top: 75px;
+}
+
+.correctAnswer .next {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    clear: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.incorrectAnswer {
+    display: none;
+}
