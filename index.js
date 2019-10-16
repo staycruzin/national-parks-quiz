@@ -93,20 +93,101 @@ const QUESTIONS = [
     }
 ];
 
+let questionNumber = 0;
+let score = 0;
+let shuffledDeck;
+
+function shuffleQuestions() {
+    const shuffledQuestions = Array.from(QUESTIONS);
+
+    let count = shuffledQuestions.length;
+    let temp;
+    let index;
+
+    while (count > 0) {
+        index = Math.floor(Math.random() * count);
+
+        count--;
+
+        temp = shuffledQuestions[count];
+        shuffledQuestions[count] = shuffledQuestions[index];
+        shuffledQuestions[index] = temp;
+    }
+
+    return shuffledQuestions;
+}
+
+function generateQuizQuestionString(question) {
+    const answerOptionsArray = question['answerOptions'];
+    
+    return `
+    <h3 class="quiz-question">${question['question']}</h3>
+    <form>
+        <input type="radio" name="answer1" value="${answerOptionsArray[0]}"> <span>${answerOptionsArray[0]}</span>
+        <br><br>
+        <input type="radio" name="answer2" value="${answerOptionsArray[1]}"> <span>${answerOptionsArray[1]}</span>
+        <br><br>
+        <input type="radio" name="answer3" value="${answerOptionsArray[2]}"> <span>${answerOptionsArray[2]}</span>
+        <br><br>
+        <input type="radio" name="answer4" value="${answerOptionsArray[3]}"> <span>${answerOptionsArray[3]}</span>
+        <br><br>
+        <button class="submit-answer js-submit-answer" type="submit">Submit</button>
+    </form>`;
+}
+    
+// This function will be responsible for handling when users click the "Start Quiz" button
 function startQuizClicked() {
-    // This function will be responsible for when users click the "Start Quiz" button
+    $('.main-container').on('click', '.js-start', function(event) {
+        // Shuffles the quiz questions
+        shuffledDeck = shuffleQuestions();
+
+        // Creates a String representing the #quiz-page <section> for the first question
+        const questionString = generateQuizQuestionString(shuffledDeck[questionNumber]);
+        
+        // Inserts the String inside the #quiz-page <section>
+        $('#quiz-page').html(questionString);
+
+        // Sets questionNumber to 1 renders the score/question number in the HTML. 
+        questionNumber++;
+        $('.js-question-number').text(questionNumber + '/10');
+        $('.js-current-score').text(score);
+
+        // Hides the #home-page <section> and displays the #quiz-page <section>. 
+        $('#home-page').removeClass('view').addClass('hide-view');
+        $('#quiz-page').removeClass('hide-view').addClass('view');
+    });
 }
 
+// This function will be responsible for handling when users click the "Submit" button
 function submitAnswerClicked() {
-    // This function will be responsible for when users click the "Submit" button
+    $('.main-container').on('click', '.js-submit-answer', function(event) {
+        event.preventDefault();
+    // 1) Make sure that a radio <input> was selected, display an error message if not.
+    // 2) Check the radio <input> selected against the value for the 'answer' property for the corresponding question.
+    // 3) IF the answer is correct, generate a String representing the #correct-page <section> with the: .correct-answer <span> set to the answer value, .badge <img> set to the corresponding badge, 
+    //    .answer-detail <p> set to the value in the answerDetail property of the question. Insert the String inside the #correct-page <section> in the DOM the hide then hide the #quiz-page <section> 
+    //    and display the #correct-page <section>. Increase questionNumber and score by 1.
+    // 4) IF the answer is incorrect, generate a String representing the #incorrect-page <section> with the: .correct-answer <span> set to the answer value,
+    //    .answer-detail <p> set to the value in the answerDetail property of the question. Insert the String inside the #incorrect-page <section> in the DOM the hide the #quiz-page <section> 
+    //    and display the #incorrect-page <section>. Increase ONLY questionNumber by 1.
+    // 5) Update the .question-number <span> and .score <span>
+    });
 }
 
+// This function will be responsible for handling when users click the "Next Question" button
 function nextQuestionClicked() {
-    // This function will be responsible for when users click the "Next Question" button
+    // 1) IF questionNumber === 10, generate a String representing the #quiz-end-page <section> with the: Score and a customized message depending on how they scored.
+    //    Then hide the #quiz-page <section> and show the #quiz-end-page <section>
+    // 2) ELSE Pull a random question from the QUESTIONS array that was not already selected.
+    // 3) Generate a String representing the #quiz-page <section> with: The value for the question property rendered as the <h3>, the values for the answerOptions rendered as the value/text for the
+    //    radio <input>s.
+    // 4) Insert the String inside the #quiz-page <section> then hide the #incorrect-page or #correct-page sections and display the #quiz-page <section>
 }
-
+    
+// This function will be responsible for handling when users click the "Play Again" button
 function playAgainClicked() {
-    // This function will be responsible for when users click the "Play Again" button
+    // 1) Set questionNumber and score to 0 (or hide them).
+    // 2) Hide the #quiz-end-page <section> and display the #home-page<section>
 }
 
 // This function will be our callback when the page loads. It's responsible for activating our individual functions that we will write to implement the quiz app

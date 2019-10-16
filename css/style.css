@@ -2,31 +2,42 @@
     box-sizing: border-box;
 }
 
-.nps {
+.badge, .nps-logo {
     height: 300px;
     width: 250px;
 }
 
 .header {
+    font-family: 'Sigmar One', cursive;
     width: 100%;
     position: relative;
 }
 
 .header h1 {
     display: inline-block;
-    margin-left: 10px
+    margin-left: 10px;
+}
+
+h3 {
+    font-family: 'Lato', sans-serif;
+    color: #590478;
+}
+
+#quiz-page span {
+    font-family: 'Lato', sans-serif;
 }
 
 .status {
     position: absolute;
-    right: 10px;
+    right: 0px;
+    top: 10px;
     display: inline-block;
     list-style: none;
-    margin-top: 30px;
 }
 
 .status li {
     display: inline;
+    font-size: 20px;
     padding-left: 10px;
     padding-right: 10px;
 }

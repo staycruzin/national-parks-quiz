@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato|Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:900|Sigmar+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -17,46 +17,34 @@
     <header class="header" role="banner">
         <h1>National Parks Quiz App</h1>
         <ul class="status">
-            <li>Question: <span>0/10</span></li>
+            <li>Question: <span class="js-question-number"></span></li>
             <li>|</li>
-            <li>Score: <span>0</span></li>
+            <li>Score: <span class="js-current-score"></span></li>
         </ul>
     </header>
 
     <main class="main-container" role="main">
         <section id="home-page" class="view">
             <h3 class="main-question">How well do you know our national parks?</h3>
-            <img class="nps" src="images/delaware.png" alt="National Park Service Logo">
-            <button class="start" type="button">Start Quiz</button>
+            <img class="nps-logo" src="images/delaware.png" alt="National Park Service Logo">
+            <button class="start js-start" type="button">Start Quiz</button>
         </section>
 
         <section id="quiz-page" class="hide-view">
-            <h3 class="quiz-question">What is the only state in the United States that is unfortunate enough to not have either a national park or a national monument?</h3>
-            <form>
-                <input type="radio" name="answer1" value="Delaware"> Delaware
-                <br><br>
-                <input type="radio" name="answer2" value="New York"> New York
-                <br><br>
-                <input type="radio" name="answer3" value="New Jersey"> New Jersey
-                <br><br>
-                <input type="radio" name="answer4" value="Ohio"> Ohio
-                <br><br>
-                <button class="submit-answer" type="submit">Submit</button>
-            </form>
         </section>
 
         <section id="correct-page" class="hide-view">        
-                <h3>Correct! You just earned the National Park badge.</h3>
-                <img class="nps" src="images/delaware.png" alt="National Park Service Logo">
+                <h3>Correct! You just earned the <span class="correct-answer">National Park</span> badge.</h3>
+                <img class="badge" src="images/delaware.png" alt="National Park Service Logo">
                 <p>Detailed Answer: </p>
-                <p>Delaware, which is ironically the country's first state, is the only state that does not currently have a national park or a national monument.</p>
-                <button class="next" type="button">Next Question</button>
+                <p class="answer-detail">Delaware, which is ironically the country's first state, is the only state that does not currently have a national park or a national monument.</p>
+                <button class="next js-next" type="button">Next</button>
         </section>
         <section id="incorrect-page" class="hide-view">        
-                <h3>Incorrect. The Correct Answer Was Delaware.</h3>
+                <h3>Incorrect. The Correct Answer Was <span class="correct-answer">Delaware.</span></h3>
                 <p>Detailed Answer: </p>
                 <p>Delaware, which is ironically the country's first state, is the only state that does not currently have a national park or a national monument.</p>
-                <button class="next" type="button">Next Question</button>
+                <button class="next js-next" type="button">Next</button>
         </section>
 
         <section id="quiz-end-page" class="hide-view">        
