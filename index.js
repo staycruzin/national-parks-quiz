@@ -121,17 +121,19 @@ function generateQuizQuestionString(question) {
     const answerOptionsArray = question['answerOptions'];
     
     return `
-    <h3 class="quiz-question">${question['question']}</h3>
     <form>
-        <input type="radio" name="answer1" value="${answerOptionsArray[0]}"> <span>${answerOptionsArray[0]}</span>
-        <br><br>
-        <input type="radio" name="answer2" value="${answerOptionsArray[1]}"> <span>${answerOptionsArray[1]}</span>
-        <br><br>
-        <input type="radio" name="answer3" value="${answerOptionsArray[2]}"> <span>${answerOptionsArray[2]}</span>
-        <br><br>
-        <input type="radio" name="answer4" value="${answerOptionsArray[3]}"> <span>${answerOptionsArray[3]}</span>
-        <br><br>
-        <button class="submit-answer js-submit-answer" type="submit">Submit</button>
+        <fieldset>
+            <legend><h3>${question['question']}</h3></legend>
+            <label><input type="radio" name="userAnswer" value="${answerOptionsArray[0]}" required> <span>${answerOptionsArray[0]}</span></label>
+            <br><br>
+            <label><input type="radio" name="userAnswer" value="${answerOptionsArray[1]}" required> <span>${answerOptionsArray[1]}</span></label>
+            <br><br>
+            <label><input type="radio" name="userAnswer" value="${answerOptionsArray[2]}" required> <span>${answerOptionsArray[2]}</span></label>
+            <br><br>
+            <label><input type="radio" name="userAnswer" value="${answerOptionsArray[3]}" required> <span>${answerOptionsArray[3]}</span></label>
+            <br><br>
+            <button class="submit-answer js-submit-answer" type="submit">Submit</button>
+        </fieldset>
     </form>`;
 }
     
@@ -158,36 +160,134 @@ function startQuizClicked() {
     });
 }
 
+function validateAnswer() {
+    let radioButtons = document.getElementsByName("userAnswer");
+    let selectedAnswer = "";
+    const answer = shuffledDeck[questionNumber - 1].answer;
+
+    for (let i = 0; i < radioButtons.length; i++) {
+        if (radioButtons[i].checked) {
+            selectedAnswer = radioButtons[i].value;
+        }
+    }
+
+    if (selectedAnswer.length === 0) {
+        alert('Please select an answer to proceed.')
+        return -1;
+    } else {
+        if (selectedAnswer === answer) {
+            return 1;
+        } else if (selectedAnswer !== answer) {
+            return 0;
+        }
+    }
+}
+
+function generateCorrectAnswerPage() {
+    $('.js-correct-answer').text(`${shuffledDeck[questionNumber - 1].answer}`);
+    $('.js-answer-detail').text(`${shuffledDeck[questionNumber - 1].answerDetail}`);
+
+    document.getElementById('badge').src = `${shuffledDeck[questionNumber - 1].badge}`;
+    document.getElementById('badge').alt = `${shuffledDeck[questionNumber - 1].answer} logo.`;
+
+    $('#quiz-page').removeClass('view').addClass('hide-view');
+    $('#correct-page').removeClass('hide-view').addClass('view');
+}
+
+function generateIncorrectAnswerPage() {
+    $('.js-correct-answer').text(`${shuffledDeck[questionNumber - 1].answer}`);
+    $('.js-answer-detail').text(`${shuffledDeck[questionNumber - 1].answerDetail}`);
+
+    $('#quiz-page').removeClass('view').addClass('hide-view');
+    $('#incorrect-page').removeClass('hide-view').addClass('view');    
+}
+
 // This function will be responsible for handling when users click the "Submit" button
 function submitAnswerClicked() {
     $('.main-container').on('click', '.js-submit-answer', function(event) {
         event.preventDefault();
-    // 1) Make sure that a radio <input> was selected, display an error message if not.
-    // 2) Check the radio <input> selected against the value for the 'answer' property for the corresponding question.
-    // 3) IF the answer is correct, generate a String representing the #correct-page <section> with the: .correct-answer <span> set to the answer value, .badge <img> set to the corresponding badge, 
-    //    .answer-detail <p> set to the value in the answerDetail property of the question. Insert the String inside the #correct-page <section> in the DOM the hide then hide the #quiz-page <section> 
-    //    and display the #correct-page <section>. Increase questionNumber and score by 1.
-    // 4) IF the answer is incorrect, generate a String representing the #incorrect-page <section> with the: .correct-answer <span> set to the answer value,
-    //    .answer-detail <p> set to the value in the answerDetail property of the question. Insert the String inside the #incorrect-page <section> in the DOM the hide the #quiz-page <section> 
-    //    and display the #incorrect-page <section>. Increase ONLY questionNumber by 1.
-    // 5) Update the .question-number <span> and .score <span>
+
+        // Check that a radio <input> was selected and display an error message if not, or validate radio <input> selected vs answer.
+        let correctAnswerProvided = validateAnswer();
+
+        // 3) IF the answer is correct, generate a String representing the #correct-page <section> with the: .correct-answer <span> set to the answer value, .badge <img> set to the corresponding badge, 
+        //    .answer-detail <p> set to the value in the answerDetail property of the question. Insert the String inside the #correct-page <section> in the DOM the hide then hide the #quiz-page <section> 
+        //    and display the #correct-page <section>. Increase questionNumber and score by 1.        
+        if (correctAnswerProvided === 1) {
+            generateCorrectAnswerPage();
+            score++;
+        }
+
+        // 4) IF the answer is incorrect, generate a String representing the #incorrect-page <section> with the: .correct-answer <span> set to the answer value,
+        //    .answer-detail <p> set to the value in the answerDetail property of the question. Insert the String inside the #incorrect-page <section> in the DOM the hide the #quiz-page <section> 
+        //    and display the #incorrect-page <section>. Increase ONLY questionNumber by 1.
+        if (correctAnswerProvided === 0) {
+            generateIncorrectAnswerPage();
+        }
+
+        // 5) Update the .score <span>
+        $('.js-current-score').text(score);     
     });
+}
+
+function customStringGenerator() {
+    if (score <= 3) {
+        return 'Not great!';
+    } else if (score <= 6) {
+        return 'Decent!';
+    } else if (score <= 9) {
+        return 'Great job you adventurer, you!'
+    } else if (score === 10) {
+        return 'Well done! You are a modern day John Muir!';
+    }
+}
+
+function generateQuizEndString() {
+    return `
+        <h3>Your score is ${score}/10</h3>
+        <p>${customStringGenerator()}</p>
+        <p>One last fun fact: There are over 18,000 miles of trails in the national parks just waiting for you to explore them. 
+            Check out the National Parks Service website for more info, and to start planning your trip today!</p>
+        <button class="play-again js-play-again" type="button">Play Again</button>`;
 }
 
 // This function will be responsible for handling when users click the "Next Question" button
 function nextQuestionClicked() {
-    // 1) IF questionNumber === 10, generate a String representing the #quiz-end-page <section> with the: Score and a customized message depending on how they scored.
-    //    Then hide the #quiz-page <section> and show the #quiz-end-page <section>
-    // 2) ELSE Pull a random question from the QUESTIONS array that was not already selected.
-    // 3) Generate a String representing the #quiz-page <section> with: The value for the question property rendered as the <h3>, the values for the answerOptions rendered as the value/text for the
-    //    radio <input>s.
-    // 4) Insert the String inside the #quiz-page <section> then hide the #incorrect-page or #correct-page sections and display the #quiz-page <section>
+    $('.main-container').on('click', '.js-next', function(event) {
+        questionNumber++;
+        // 1) IF questionNumber > 10, generate a String representing the #quiz-end-page <section> with the: Score and a customized message depending on how they scored.
+        //    Then hide the #quiz-page <section> and show the #quiz-end-page <section>
+        if (questionNumber > 10) {
+            $('#quiz-end-page').html(generateQuizEndString());
+            $('#quiz-end-page').removeClass('hide-view').addClass('view');
+            $('#correct-page').removeClass('view').addClass('hide-view');
+            $('#incorrect-page').removeClass('view').addClass('hide-view');           
+        } else {
+            $('.js-question-number').text(questionNumber + '/10');
+
+            // 2) ELSE Pull a random question from the QUESTIONS array that was not already selected.
+            const questionString = generateQuizQuestionString(shuffledDeck[questionNumber - 1]);
+            $('#quiz-page').html(questionString)   
+
+            // 3) Insert the String inside the #quiz-page <section> then hide the #incorrect-page or #correct-page sections and display the #quiz-page <section>
+            $('#quiz-page').removeClass('hide-view').addClass('view');
+            $('#correct-page').removeClass('view').addClass('hide-view');
+            $('#incorrect-page').removeClass('view').addClass('hide-view');
+        }
+    });
 }
     
 // This function will be responsible for handling when users click the "Play Again" button
 function playAgainClicked() {
+    $('.main-container').on('click', '.js-play-again', function(event) {
     // 1) Set questionNumber and score to 0 (or hide them).
+    $('.js-question-number').text("");
+    $('.js-current-score').text("");
+
     // 2) Hide the #quiz-end-page <section> and display the #home-page<section>
+    $('#home-page').removeClass('hide-view').addClass('view');
+    $('#quiz-end-page').removeClass('view').addClass('hide-view');
+    });
 }
 
 // This function will be our callback when the page loads. It's responsible for activating our individual functions that we will write to implement the quiz app
