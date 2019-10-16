@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:900|Sigmar+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900|Sigmar+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -24,7 +24,7 @@
     </header>
 
     <main class="main-container" role="main">
-        <section id="home-page" class="view">
+        <section id="home-page">
             <h3 class="main-question">How well do you know our national parks?</h3>
             <img class="nps-logo" src="images/delaware.png" alt="National Park Service Logo">
             <button class="start js-start" type="button">Start Quiz</button>
@@ -36,13 +36,14 @@
         <section id="correct-page" class="hide-view">        
                 <h3>Correct! You just earned the <span class="js-correct-answer"></span> badge.</h3>
                 <img id= "badge" class="badge" src="" alt="">
-                <p>Detailed Answer: </p>
+                <p><strong>Detailed Answer: </strong></p>
                 <p class="answer-detail js-answer-detail"></p>
                 <button class="next js-next" type="button">Next</button>
         </section>
+
         <section id="incorrect-page" class="hide-view">        
-                <h3>Incorrect. The Correct Answer Was <span class="js-correct-answer"></span></h3>
-                <p>Detailed Answer: </p>
+                <h3>Incorrect. The correct answer was <span class="js-correct-answer"></span>.</h3>
+                <p><strong>Detailed Answer: </strong></p>
                 <p class="answer-detail js-answer-detail"></p>
                 <button class="next js-next" type="button">Next</button>
         </section>
@@ -53,5 +54,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="index.js"></script>
+    <script src="questions.js"></script>
 </body>
 </html>

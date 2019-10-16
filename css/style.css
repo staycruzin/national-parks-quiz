@@ -20,11 +20,18 @@
 
 h3 {
     font-family: 'Lato', sans-serif;
+    font-weight: 900;
     color: #590478;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
 }
 
 #quiz-page span {
     font-family: 'Lato', sans-serif;
+    font-weight: 900;
 }
 
 fieldset {
@@ -65,10 +72,6 @@ fieldset {
     margin-right: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-
-.view {
-    display: block;
 }
 
 .hide-view {
