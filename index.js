@@ -68,7 +68,7 @@ const QUESTIONS = [
     {
         id: 8,
         question: 'What national park is known for, and named after, its world-renowned concentration of sea turtles?',
-        answerOptions: ['Dry Tortugas National Park', 'Isle Royal National Park', 'Virgin Island National Park', 'Channel Islands National Park'],
+        answerOptions: ['Dry Tortugas National Park', 'Isle Royal National Park', 'Virgin Islands National Park', 'Channel Islands National Park'],
         answer: 'Dry Tortugas National Park',
         answerDetail:'Located 70 miles west of Key West, Florida, Dry Tortugas National Park was originally named Las Tortugas, which is Spanish for "The Turtles." It is also one of the most remote ' +
             'national parks, as it is only accessible by boat or seaplane.',
@@ -98,8 +98,7 @@ let score = 0;
 let shuffledDeck;
 
 function shuffleQuestions() {
-    const shuffledQuestions = Array.from(QUESTIONS);
-
+    let shuffledQuestions = Array.from(QUESTIONS);
     let count = shuffledQuestions.length;
     let temp;
     let index;
@@ -118,7 +117,7 @@ function shuffleQuestions() {
 }
 
 function generateQuizQuestionString(question) {
-    const answerOptionsArray = question['answerOptions'];
+    let answerOptionsArray = question['answerOptions'];
     
     return `
     <form>
@@ -144,7 +143,7 @@ function startQuizClicked() {
         shuffledDeck = shuffleQuestions();
 
         // Creates a String representing the #quiz-page <section> for the first question
-        const questionString = generateQuizQuestionString(shuffledDeck[questionNumber]);
+        let questionString = generateQuizQuestionString(shuffledDeck[questionNumber]);
         
         // Inserts the String inside the #quiz-page <section>
         $('#quiz-page').html(questionString);
@@ -163,7 +162,7 @@ function startQuizClicked() {
 function validateAnswer() {
     let radioButtons = document.getElementsByName("userAnswer");
     let selectedAnswer = "";
-    const answer = shuffledDeck[questionNumber - 1].answer;
+    let answer = shuffledDeck[questionNumber - 1].answer;
 
     for (let i = 0; i < radioButtons.length; i++) {
         if (radioButtons[i].checked) {
@@ -280,7 +279,10 @@ function nextQuestionClicked() {
 // This function will be responsible for handling when users click the "Play Again" button
 function playAgainClicked() {
     $('.main-container').on('click', '.js-play-again', function(event) {
-    // 1) Set questionNumber and score to 0 (or hide them).
+    // 1) Set questionNumber and score to 0. Reset the deck.
+    questionNumber = 0;
+    score = 0;
+    shuffledDeck = [];
     $('.js-question-number').text("");
     $('.js-current-score').text("");
 
