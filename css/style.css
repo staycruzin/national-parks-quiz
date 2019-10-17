@@ -48,20 +48,24 @@ body {
     text-align: center;
 }
 
+.homepage-link {
+    text-decoration: none;
+}
+
 h1 {
     margin-top: 0px;
     margin-bottom: 0px;
     padding: 15px;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: black;
     font-size: 30px;
 }
 
 .status {
     padding: 10px;
-    color: white;
-    background-color: black;
-    box-shadow: 0 8px 6px -6px white;
+    color: black;
+    background-color: #77BD43;
+    box-shadow: 0 8px 6px -6px black;
 }
 
 .status li {
@@ -71,16 +75,19 @@ h1 {
 
 h3 {
     color: white;
+    font-size: 20px;
     margin-bottom: 20px; 
 }
 
 p {
-    font-weight: 400;
+    font-weight: 500;
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
 #quiz-page span {
     font-weight: 900;
+    font-size: 18px;
 }
 
 fieldset {
