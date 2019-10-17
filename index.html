@@ -14,40 +14,36 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
+    <img src="images/background-image.jpg" alt="background image" class="background-image" />
+    <div class="overlay"></div>
     <header class="header" role="banner">
         <h1>National Parks Quiz App</h1>
         <ul class="status">
             <li>Question: <span class="js-question-number"></span></li>
-            <li>|</li>
+            <li id="divider">|</li>
             <li>Score: <span class="js-current-score"></span></li>
         </ul>
     </header>
 
     <main class="main-container" role="main">
-        <section id="home-page">
+        <section id="home-page" class="view">
             <h3 class="main-question">How well do you know our national parks?</h3>
             <img class="nps-logo" src="images/delaware.png" alt="National Park Service Logo">
             <button class="start js-start" type="button">Start Quiz</button>
         </section>
-
         <section id="quiz-page" class="hide-view">
         </section>
-
         <section id="correct-page" class="hide-view">        
                 <h3>Correct! You just earned the <span class="js-correct-answer"></span> badge.</h3>
                 <img id= "badge" class="badge" src="" alt="">
-                <p><strong>Detailed Answer: </strong></p>
-                <p class="answer-detail js-answer-detail"></p>
+                <p class="detail"><strong>Detailed Answer: </strong><br><span class="answer-detail js-answer-detail"></span></p>
                 <button class="next js-next" type="button">Next</button>
         </section>
-
         <section id="incorrect-page" class="hide-view">        
                 <h3>Incorrect. The correct answer was <span class="js-correct-answer"></span>.</h3>
-                <p><strong>Detailed Answer: </strong></p>
-                <p class="answer-detail js-answer-detail"></p>
+                <p class="detail"><strong>Detailed Answer: </strong><br><span class="answer-detail js-answer-detail"></span></p>
                 <button class="next js-next" type="button">Next</button>
         </section>
-
         <section id="quiz-end-page" class="hide-view">        
         </section>
     </main>

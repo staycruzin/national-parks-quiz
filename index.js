@@ -55,8 +55,8 @@ function startQuizClicked() {
         $('.js-question-number').text(questionNumber + '/10');
         $('.js-current-score').text(score);
 
-        $('#home-page').hide();
-        $('#quiz-page').show();
+        $('#home-page').removeClass('view').addClass('hide-view');
+        $('#quiz-page').removeClass('hide-view').addClass('view');
     });
 }
 
@@ -95,14 +95,14 @@ function generateAnswerPage(value) {
         score++;
         $('.js-current-score').text(score);
 
-        $('#quiz-page').hide();
-        $('#correct-page').show();
+        $('#quiz-page').removeClass('view').addClass('hide-view');
+        $('#correct-page').removeClass('hide-view').addClass('view');
     } else if (value === false) {
         $('.js-correct-answer').text(`${shuffledDeck[questionNumber - 1].answer}`);
         $('.js-answer-detail').text(`${shuffledDeck[questionNumber - 1].answerDetail}`);
     
-        $('#quiz-page').hide();
-        $('#incorrect-page').show(); 
+        $('#quiz-page').removeClass('view').addClass('hide-view');
+        $('#incorrect-page').removeClass('hide-view').addClass('view');
     }
 }
 
@@ -147,18 +147,18 @@ function nextQuestionClicked() {
         if (questionNumber > 10) {
             $('#quiz-end-page').html(generateQuizEndString());
             
-            $('#quiz-end-page').show();
-            $('#correct-page').hide();
-            $('#incorrect-page').hide();           
+            $('#quiz-end-page').removeClass('hide-view').addClass('view');
+            $('#correct-page').removeClass('view').addClass('hide-view');
+            $('#incorrect-page').removeClass('view').addClass('hide-view');         
         } else {
             $('.js-question-number').text(questionNumber + '/10');
 
             let questionString = generateQuizQuestionString(shuffledDeck[questionNumber - 1]);
             $('#quiz-page').html(questionString)   
 
-            $('#quiz-page').show();
-            $('#correct-page').hide();
-            $('#incorrect-page').hide();
+            $('#quiz-page').removeClass('hide-view').addClass('view');
+            $('#correct-page').removeClass('view').addClass('hide-view');
+            $('#incorrect-page').removeClass('view').addClass('hide-view');
         }
     });
 }
@@ -177,8 +177,8 @@ function playAgainClicked() {
     $('.main-container').on('click', '.js-play-again', function(event) {
         resetGame();
 
-        $('#home-page').show();
-        $('#quiz-end-page').hide();
+        $('#home-page').removeClass('hide-view').addClass('view');
+        $('#quiz-end-page').removeClass('view').addClass('hide-view');
     });
 }
 
