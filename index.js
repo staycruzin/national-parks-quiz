@@ -123,9 +123,9 @@ function customStringGenerator() {
     } else if (score <= 6) {
         return 'Could be worse, but there\'s definitely some room for improvement.';
     } else if (score <= 9) {
-        return 'Well done you adventurer, you!'
+        return 'You\'ve clearly been to a national park or two or three before..'
     } else if (score === 10) {
-        return 'Perfect score! You are a modern day John Muir!';
+        return 'Perfect score! You\'re a modern day John Muir.';
     }
 }
 
