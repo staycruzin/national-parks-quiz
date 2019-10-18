@@ -129,7 +129,7 @@ button:hover {
     border: 0.16em solid black;   
 }
 
-.hide-view, .wrapper, #divider {
+.hide-view, #divider {
     display: none;
 }
 

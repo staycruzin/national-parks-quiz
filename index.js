@@ -48,8 +48,7 @@ function startQuizClicked() {
     $('.main-container').on('click', '.js-start', function(event) {
         shuffledDeck = shuffleQuestions();
 
-        let questionString = generateQuizQuestionString(shuffledDeck[questionNumber]);
-        $('#quiz-page').html(questionString);
+        $('#quiz-page').html(generateQuizQuestionString(shuffledDeck[questionNumber]));
 
         questionNumber++;
         $('.js-question-number').text(questionNumber + '/10');
@@ -153,8 +152,7 @@ function nextQuestionClicked() {
         } else {
             $('.js-question-number').text(questionNumber + '/10');
 
-            let questionString = generateQuizQuestionString(shuffledDeck[questionNumber - 1]);
-            $('#quiz-page').html(questionString)   
+            $('#quiz-page').html(generateQuizQuestionString(shuffledDeck[questionNumber - 1]));   
 
             $('#quiz-page').removeClass('hide-view').addClass('view');
             $('#correct-page').removeClass('view').addClass('hide-view');
