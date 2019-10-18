@@ -25,7 +25,7 @@ body {
     z-index: 1;
 }
 
-.badge,.nps-logo {
+#badge, #nps-logo {
     height: 225px;
     width: 175px;
     margin-bottom: 20px;
@@ -124,9 +124,9 @@ button {
 }
 
 button:hover {
-    color: black;
+    color: #000000;
     background-color: #ffffff;
-    border: 0.16em solid black;   
+    border: 0.16em solid #000000;
 }
 
 .hide-view, #divider {
@@ -212,7 +212,11 @@ button:hover {
         width: 75%;
     }
 
-    #correct-page p {
+    .incorrect-answer-detail, .last-fun-fact {
+        width: 75%;
+    }
+
+    .correct-answer-detail {
         width: 40%;
         margin-left: 20px;
     }

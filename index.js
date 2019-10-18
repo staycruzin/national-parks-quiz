@@ -83,25 +83,26 @@ function validateAnswer() {
 }
 
 function generateAnswerPage(value) {
-    
     if (value) {
-        $('.js-correct-answer').text(`${shuffledDeck[questionNumber - 1].answer}`);
-        $('.js-answer-detail').text(`${shuffledDeck[questionNumber - 1].answerDetail}`);
-
-        document.getElementById('badge').src = `${shuffledDeck[questionNumber - 1].badge}`;
-        document.getElementById('badge').alt = `${shuffledDeck[questionNumber - 1].answer} logo.`;
-        
         score++;
         $('.js-current-score').text(score);
 
-        $('#quiz-page').removeClass('view').addClass('hide-view');
-        $('#correct-page').removeClass('hide-view').addClass('view');
+        let altString = `${shuffledDeck[questionNumber - 1].answer} logo.`;
+
+        return `
+            <h3>Correct! You just earned the ${shuffledDeck[questionNumber - 1].answer} badge.</h3>
+            <div class="wrapper">
+                <img id="badge" src=${shuffledDeck[questionNumber - 1].badge} alt=${altString}>
+                <p class="correct-answer-detail"><strong>Detailed Answer: </strong><br>${shuffledDeck[questionNumber - 1].answerDetail}</p>
+            </div>
+            <button class="js-next" type="button">Next</button>
+        `;
     } else if (value === false) {
-        $('.js-correct-answer').text(`${shuffledDeck[questionNumber - 1].answer}`);
-        $('.js-answer-detail').text(`${shuffledDeck[questionNumber - 1].answerDetail}`);
-    
-        $('#quiz-page').removeClass('view').addClass('hide-view');
-        $('#incorrect-page').removeClass('hide-view').addClass('view');
+        return `
+            <h3>Incorrect. The correct answer was ${shuffledDeck[questionNumber - 1].answer}.</h3>
+            <p class="incorrect-answer-detail"><strong>Detailed Answer: </strong><br>${shuffledDeck[questionNumber - 1].answerDetail}</p>
+            <button class="js-next" type="button">Next</button>
+        `;
     }
 }
 
@@ -112,7 +113,10 @@ function submitAnswerClicked() {
 
         let isCorrect = validateAnswer();
 
-        generateAnswerPage(isCorrect);     
+        $('#answer-page').html(generateAnswerPage(isCorrect)); 
+        
+        $('#quiz-page').removeClass('view').addClass('hide-view');
+        $('#answer-page').removeClass('hide-view').addClass('view');
     });
 }
 
@@ -132,10 +136,10 @@ function generateQuizEndString() {
     return `
         <h3>Your score is ${score}/10</h3>
         <p><strong>${customStringGenerator()}</strong></p>
-        <p><strong>One last fun fact:</strong> There are over 18,000 miles of trails in the national parks just waiting for you to explore them. 
+        <p class="last-fun-fact"><strong>One last fun fact:</strong> There are over 18,000 miles of trails in the national parks just waiting for you to explore them. 
             Check out the National Parks Service <a href="https://www.nps.gov/index.htm">website</a> for more info, and to start planning your trip 
             today!</p>
-        <button class="play-again js-play-again" type="button">Play Again</button>`;
+        <button class="js-play-again" type="button">Play Again</button>`;
 }
 
 // This function will be responsible for handling when users click the "Next Question" button
@@ -147,16 +151,14 @@ function nextQuestionClicked() {
             $('#quiz-end-page').html(generateQuizEndString());
             
             $('#quiz-end-page').removeClass('hide-view').addClass('view');
-            $('#correct-page').removeClass('view').addClass('hide-view');
-            $('#incorrect-page').removeClass('view').addClass('hide-view');         
+            $('#answer-page').removeClass('view').addClass('hide-view');
         } else {
             $('.js-question-number').text(questionNumber + '/10');
 
             $('#quiz-page').html(generateQuizQuestionString(shuffledDeck[questionNumber - 1]));   
 
             $('#quiz-page').removeClass('hide-view').addClass('view');
-            $('#correct-page').removeClass('view').addClass('hide-view');
-            $('#incorrect-page').removeClass('view').addClass('hide-view');
+            $('#answer-page').removeClass('view').addClass('hide-view');
         }
     });
 }
