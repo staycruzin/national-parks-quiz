@@ -137,7 +137,7 @@ function generateQuizEndString() {
         <h3>Your score is ${score}/10</h3>
         <p><strong>${customStringGenerator()}</strong></p>
         <p class="last-fun-fact"><strong>One last fun fact:</strong> There are over 18,000 miles of trails in the national parks just waiting for you to explore them. 
-            Check out the National Parks Service <a href="https://www.nps.gov/index.htm">website</a> for more info, and to start planning your trip 
+            Check out the National Parks Service <a target="_blank" href="https://www.nps.gov/index.htm">website</a> for more info, and to start planning your trip 
             today!</p>
         <button class="js-play-again" type="button">Play Again</button>`;
 }

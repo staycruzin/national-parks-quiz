@@ -4,7 +4,8 @@
     margin: 0;
 }
 
-body, html {
+body,
+html {
     height: 100%;
 }
 
@@ -25,7 +26,8 @@ body {
     z-index: 1;
 }
 
-#badge, #nps-logo {
+#badge,
+#nps-logo {
     height: 225px;
     width: 175px;
     margin-bottom: 20px;
@@ -41,7 +43,7 @@ body {
     z-index: 3;
 }
 
-.homepage-link {
+#homepage-link {
     text-decoration: none;
 }
 
@@ -129,7 +131,8 @@ button:hover {
     border: 0.16em solid #000000;
 }
 
-.hide-view, #divider {
+.hide-view,
+#divider {
     display: none;
 }
 
@@ -167,28 +170,19 @@ button:hover {
         box-shadow: none;
     }
     
-    .status li {
-        font-size: 25px;
-    }
-
+    .status li,
     h3 {
         font-size: 25px;
     }
     
-    p {
-        font-size: 22px;
-    }
-    
+    p,
+    button,
     #quiz-page span {
         font-size: 22px;
     }
 
     .submit-answer {
         margin-top: 10px;
-    }
-
-    button {
-        font-size: 22px;
     }
 }
 
@@ -208,11 +202,9 @@ button:hover {
         align-items: center;
     }
 
-    .main-container {
-        width: 75%;
-    }
-
-    .incorrect-answer-detail, .last-fun-fact {
+    .main-container, 
+    .incorrect-answer-detail, 
+    .last-fun-fact {
         width: 75%;
     }
 
