@@ -87,10 +87,6 @@ fieldset {
     border: 0;
 }
 
-#divider {
-    display: none;
-}
-
 .main-container {
     font-family: 'Lato', sans-serif;
     margin-top: 170px;
@@ -133,7 +129,7 @@ button:hover {
     border: 0.16em solid black;   
 }
 
-.hide-view {
+.hide-view, .wrapper, #divider {
     display: none;
 }
 
@@ -197,5 +193,27 @@ button:hover {
 }
 
 @media screen and (min-width: 950px) {
+    .status li {
+        display: inline;
+    }
 
+    #divider {
+        display: inline;
+        margin: 0 10px 0 10px;
+    }
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-container {
+        width: 75%;
+    }
+
+    #correct-page p {
+        width: 40%;
+        margin-left: 20px;
+    }
 }
