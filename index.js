@@ -113,10 +113,12 @@ function submitAnswerClicked() {
 
         let isCorrect = validateAnswer();
 
-        $('#answer-page').html(generateAnswerPage(isCorrect)); 
+        if (isCorrect !== undefined) {
+            $('#answer-page').html(generateAnswerPage(isCorrect)); 
         
-        $('#quiz-page').removeClass('view').addClass('hide-view');
-        $('#answer-page').removeClass('hide-view').addClass('view');
+            $('#quiz-page').removeClass('view').addClass('hide-view');
+            $('#answer-page').removeClass('hide-view').addClass('view');
+        }
     });
 }
 
