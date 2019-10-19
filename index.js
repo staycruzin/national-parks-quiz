@@ -31,13 +31,9 @@ function generateQuizQuestionString(question) {
         <fieldset>
             <legend><h3>${question['question']}</h3></legend>
             <label><input type="radio" name="userAnswer" value="${answerOptionsArray[0]}" required> <span>${answerOptionsArray[0]}</span></label>
-            <br><br>
             <label><input type="radio" name="userAnswer" value="${answerOptionsArray[1]}" required> <span>${answerOptionsArray[1]}</span></label>
-            <br><br>
             <label><input type="radio" name="userAnswer" value="${answerOptionsArray[2]}" required> <span>${answerOptionsArray[2]}</span></label>
-            <br><br>
             <label><input type="radio" name="userAnswer" value="${answerOptionsArray[3]}" required> <span>${answerOptionsArray[3]}</span></label>
-            <br><br>
             <button class="submit-answer js-submit-answer" type="submit">Submit</button>
         </fieldset>
     </form>`;

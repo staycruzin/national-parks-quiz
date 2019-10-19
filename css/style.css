@@ -83,6 +83,19 @@ p {
 #quiz-page span {
     font-weight: 900;
     font-size: 18px;
+    margin-left: 5px;
+}
+
+#quiz-page label {
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+#quiz-page label,
+#quiz-page input:hover {
+    cursor: pointer;
 }
 
 fieldset {
@@ -127,6 +140,7 @@ button {
 
 button:hover {
     color: #000000;
+    cursor: pointer;
     background-color: #ffffff;
     border: 0.16em solid #000000;
 }
@@ -179,10 +193,6 @@ button:hover {
     button,
     #quiz-page span {
         font-size: 22px;
-    }
-
-    .submit-answer {
-        margin-top: 10px;
     }
 }
 
